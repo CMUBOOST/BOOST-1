@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+  <node
+    pkg="rosbag"
+    type="record"
+    name="record"
+    args="-o /home/cmuboost/bagfiles/gripper /chatter"
+    output = "screen"
+  />
+  
+
+</launch>
