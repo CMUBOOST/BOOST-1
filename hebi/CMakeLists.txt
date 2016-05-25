@@ -115,6 +115,16 @@ include_directories(
 #)
 
 ## Declare a cpp executable
+add_executable(stalker_base_motor_commands src/stalker_base_motor_commands.cpp
+  include/hebi/cpp/command.cpp
+  include/hebi/cpp/feedback.cpp
+  include/hebi/cpp/module.cpp
+  include/hebi/cpp/group_command.cpp
+  include/hebi/cpp/group_feedback.cpp
+  include/hebi/cpp/group.cpp
+  include/hebi/cpp/lookup.cpp
+)
+
 add_executable(foxbot_node src/foxbot_node.cpp
   include/hebi/cpp/command.cpp
   include/hebi/cpp/feedback.cpp
@@ -159,6 +169,7 @@ add_executable(foxbot_tray_node src/foxbot_tray_node.cpp
 ## as an example, message headers may need to be generated before nodes
 # add_dependencies(hebi_node hebi_generate_messages_cpp)
 #add_dependencies(group_node hebi_generate_messages_cpp)
+add_dependencies(stalker_base_motor_commands hebi_generate_messages_cpp)
 add_dependencies(foxbot_node hebi_generate_messages_cpp)
 add_dependencies(ARM_node hebi_generate_messages_cpp)
 add_dependencies(kdc_arm_node hebi_generate_messages_cpp)
@@ -169,6 +180,7 @@ add_dependencies(foxbot_tray_node hebi_generate_messages_cpp)
 #   ${catkin_LIBRARIES}
 # )
 #target_link_libraries(group_node ${catkin_LIBRARIES} ${CMAKE_SOURCE_DIR}/${PROJECT_NAME}/lib/libhebi.so)
+target_link_libraries(stalker_base_motor_commands ${catkin_LIBRARIES} ${CMAKE_CURRENT_SOURCE_DIR}/lib/libhebi.so)
 target_link_libraries(foxbot_node ${catkin_LIBRARIES} ${CMAKE_CURRENT_SOURCE_DIR}/lib/libhebi.so)
 target_link_libraries(ARM_node ${catkin_LIBRARIES} ${CMAKE_CURRENT_SOURCE_DIR}/lib/libhebi.so)
 target_link_libraries(kdc_arm_node ${catkin_LIBRARIES} ${CMAKE_CURRENT_SOURCE_DIR}/lib/libhebi.so)
